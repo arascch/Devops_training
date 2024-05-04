@@ -1,2 +1,2 @@
 # Devops_training
-this repo created for Devops practices and stuff
+This repo created for DevOps practices and stuff
