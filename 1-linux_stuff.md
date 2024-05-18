@@ -35,5 +35,20 @@ some example :
 644
 [root@server1]#umask 026 "white this line you can change default umask"
 ```
+## [lost+found contain which files](https://www.baeldung.com/linux/lost-found-directory)?  
+ Firstly i want describe fsck and then write about lost+found.
+ >[!note]
+>Fsck is a utility used in Unix-like operating systems to check and repair inconsistencies in file systems.
 
-  
+The Lost+Found directory is a construct used by fsck system utility. this directory containes data that become obsolete.
+this directory create by fsck in partitions of extended file system(ext2-ext4) but also created in UFS , ZFS and UNIX file systems.
+### main goal of lost+found:
+ths files inside this directory have an inode , but they're missiong the corresponding filename that normally enables us to access files on the system , but we can still access or restore a file's data if it's integrity is intact.
+
+since the references to the file no longer exist and the file is no longer accessible normally, fsck turns the data back into a new file and deposites it in the lost+found directory.
+
+### The mklost+found Utility
+the mklost+found command creates the Lost+Found directory in the current directory if you accidentally delete it and preallocates some space for fsck, so fsck doesn't have to allocate data blocks in the file system during recovery. 
+
+>[!note]
+>to know about how recovering data from the lost+found directory you can read this article: https://www.baeldung.com/linux/lost-found-directory#recovering-data-from-the-lostfound-directory
