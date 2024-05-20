@@ -26,12 +26,13 @@ if __name__=='__main__':
         app.run(host = "0.0.0.0" ,port=port , debug=True)
 ```
 > [!note]
-> after creating .py file we need to grant access to execute for the run app.
+> After creating .py file we need to grant access 'execute' to run app.
+> I set host address "0.0.0.0" for access every devices in the local network to my service  
 
 ```
 root@server1:~/scripts# chmod +x app.py
 ```
-### 2. create multi-instance service file
+### 2. Create multi-instance service file
 
 ```
 root@server1: cd /etc/systemd/system
@@ -53,20 +54,44 @@ Restart = always
 WantedBy =default.target
 ```
 > [!note]
-> in WorkingDirectory and Exec start you have to change define your locations.
+> In WorkingDirectory and Exec start you have to change and define your locations.
 
 ### 3.Reload and start instances 
 
-systemd neet reload to know about your created service so you need reload systems.
+systemd needs to reload to know about your created service so you need to reload systems.
 ```
 root@server1:/etc/systemd/system# sudo systemctl daemon-reload
 
 ```
-then we need to start the service with like instance. in this part I'm run service with two different instance
+then we need to start the service with your instance. in this part, I'm running service with two different instance
 
 #### - instance 1
 ```
 root@server1:/etc/systemd/system# systemctl start myflaskapp@5001
+root@server1:/etc/systemd/system# systemctl enable myflaskapp@5001
 root@server1:/etc/systemd/system# systemctl status myflaskapp@5001
 ```
+![instance 5001 status](/img/5001.jpg)
 
+### - instance 2
+
+```
+root@server1:/etc/systemd/system# systemctl start myflaskapp@8010
+root@server1:/etc/systemd/system# systemctl enable myflaskapp@8010
+root@server1:/etc/systemd/system# systemctl status myflaskapp@8010
+```
+![instance 8010 status](/img/8010.png)
+
+### 4. Enter the URL and check the result 
+
+I go to 192.168.1.13:5001/hello and 8010 and that's the result :
+
+>192.168.1.13:5001/hello
+
+![first result](/img/port5001.png)
+
+>192.168.1.13:8010/hello
+
+![second result](/img/port8010.png)
+
+That's It ;)
