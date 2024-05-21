@@ -84,7 +84,7 @@ root@server1:/etc/systemd/system# systemctl status myflaskapp@8010
 
 ### 4. Enter the URL and check the result 
 
-I go to 192.168.1.13:5001/hello and 8010 and that's the result :
+I go to 192.168.1.13:5001/hello and 192.168.1.13:8010 and that's the result :
 
 >192.168.1.13:5001/hello
 
