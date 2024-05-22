@@ -1,4 +1,4 @@
-## Create multi-instance Service in Linux
+## Create multi-instance Service in Ubuntu 24.04
 
 as I describe in [systemd service](https://github.com/arascch/Devops_training/blob/main/2-0-systemdService.md) we can simply create a service in Linux but in this part, I want to create a multi_instance service with python and flask and config it as Multi-instance service. so ready to go ;)
 
