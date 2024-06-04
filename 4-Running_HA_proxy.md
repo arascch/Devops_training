@@ -3,7 +3,9 @@
 In this practice, I'm running HAproxy beside nginx webservers to increase reliability and accessibility to our servers and reduce traffic on servers with load balancing.
 
 ### requirements:
-> -Ubuntu 24.04
+> -Ubuntu 24.04 - running minimum 4 Server
+>
+> 2 of them for Nginx web servers and 2 for haproxy and keepalived
 > 
 > -nginx
 > 
